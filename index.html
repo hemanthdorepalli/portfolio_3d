@@ -4,7 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Hemanth Dorepalli — Full Stack Developer</title>
-<meta name="description" content="Full Stack Developer specializing in React, FastAPI, Django, AWS and distributed systems."/>
+<meta name="description" content="Full Stack Developer specializing in Python (Django, FastAPI), Node.js, Next.js, TypeScript, AWS and distributed systems."/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
@@ -58,6 +58,11 @@ a { color: inherit; text-decoration: none; }
 img { max-width: 100%; display: block; }
 button { cursor: pointer; font-family: var(--f-body); }
 
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  html { scroll-behavior: auto; }
+}
+
 /* ═══════════════════════════════════════════
    NOISE TEXTURE OVERLAY
 ═══════════════════════════════════════════ */
@@ -71,9 +76,14 @@ body::after {
 }
 
 /* ═══════════════════════════════════════════
-   CUSTOM CURSOR
+   CUSTOM CURSOR (desktop pointer devices only)
 ═══════════════════════════════════════════ */
-* { cursor: none; }
+@media (hover: hover) and (pointer: fine) {
+  * { cursor: none; }
+}
+@media (hover: none), (pointer: coarse) {
+  #cur-dot, #cur-ring { display: none; }
+}
 
 #cur-dot {
   position: fixed; top: -20px; left: -20px;
@@ -231,14 +241,12 @@ body.cursor-hover #cur-ring { border-color: rgba(236,72,153,.4); transform: tran
   overflow: hidden;
 }
 
-/* Globe canvas fills the hero */
 #globe-canvas {
   position: absolute; inset: 0;
   width: 100%; height: 100%;
   z-index: 0;
 }
 
-/* Radial gradient vignette over globe */
 .hero-vignette {
   position: absolute; inset: 0; z-index: 1;
   background:
@@ -250,7 +258,7 @@ body.cursor-hover #cur-ring { border-color: rgba(236,72,153,.4); transform: tran
   position: relative; z-index: 2;
   padding: 0 clamp(1.5rem, 8vw, 6rem);
   max-width: 660px;
-  padding-top: 68px; /* nav height */
+  padding-top: 68px;
 }
 
 .hero-eyebrow {
@@ -360,7 +368,6 @@ body.cursor-hover #cur-ring { border-color: rgba(236,72,153,.4); transform: tran
 }
 .btn-ghost svg { width: 16px; height: 16px; }
 
-/* Scroll indicator */
 .scroll-hint {
   position: absolute;
   bottom: 2.5rem; left: 50%;
@@ -429,7 +436,6 @@ body.cursor-hover #cur-ring { border-color: rgba(236,72,153,.4); transform: tran
   color: var(--indigo);
 }
 
-/* reveal animations */
 .reveal {
   opacity: 0;
   transform: translateY(28px);
@@ -536,16 +542,10 @@ body.cursor-hover #cur-ring { border-color: rgba(236,72,153,.4); transform: tran
   border-bottom: 1px solid var(--border);
 }
 
-.exp-header {
-  margin-bottom: 3.5rem;
-}
+.exp-header { margin-bottom: 3.5rem; }
 
-.exp-timeline {
-  position: relative;
-  padding-left: 0;
-}
+.exp-timeline { position: relative; padding-left: 0; }
 
-/* The connecting vertical line */
 .exp-timeline::before {
   content: '';
   position: absolute;
@@ -566,7 +566,6 @@ body.cursor-hover #cur-ring { border-color: rgba(236,72,153,.4); transform: tran
 }
 .exp-item:last-child { padding-bottom: 0; }
 
-/* Node dot on the line */
 .exp-item::before {
   content: '';
   position: absolute;
@@ -688,7 +687,6 @@ body.cursor-hover #cur-ring { border-color: rgba(236,72,153,.4); transform: tran
   display: flex;
   flex-direction: column;
 }
-/* Top accent line */
 .proj-card::before {
   content: '';
   position: absolute; top: 0; left: 0; right: 0; height: 2px;
@@ -710,7 +708,6 @@ body.cursor-hover #cur-ring { border-color: rgba(236,72,153,.4); transform: tran
 .proj-card[data-accent="green"]:hover  { border-color: rgba(16,185,129,.3); }
 .proj-card[data-accent="amber"]:hover  { border-color: rgba(245,158,11,.3); }
 
-/* Sweep shimmer */
 .proj-card::after {
   content: '';
   position: absolute; top: 0; left: -80%;
@@ -737,6 +734,20 @@ body.cursor-hover #cur-ring { border-color: rgba(236,72,153,.4); transform: tran
   color: var(--text);
   margin-bottom: .6rem;
   letter-spacing: -0.02em;
+}
+.proj-badge {
+  display: inline-block;
+  font-size: .6rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  border: 1px solid rgba(34,211,238,.3);
+  background: rgba(34,211,238,.08);
+  border-radius: 100px;
+  padding: .15rem .55rem;
+  margin-left: .5rem;
+  vertical-align: middle;
 }
 .proj-desc {
   font-size: .86rem;
@@ -766,18 +777,6 @@ body.cursor-hover #cur-ring { border-color: rgba(236,72,153,.4); transform: tran
    SKILLS
 ═══════════════════════════════════════════ */
 #skills { background: var(--bg-card); border-top: 1px solid var(--border); }
-
-.skills-categories {
-  display: flex; flex-direction: column; gap: 3rem;
-}
-.skill-cat-title {
-  font-size: .72rem;
-  font-weight: 600;
-  letter-spacing: .15em;
-  text-transform: uppercase;
-  color: var(--dim);
-  margin-bottom: 1.25rem;
-}
 
 .skill-pills {
   display: flex; flex-wrap: wrap; gap: .6rem;
@@ -969,15 +968,6 @@ footer {
 #mobile-menu a:hover { color: var(--text); }
 
 /* ═══════════════════════════════════════════
-   DIVIDER
-═══════════════════════════════════════════ */
-.divider {
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--border), transparent);
-}
-
-/* ═══════════════════════════════════════════
    RESPONSIVE
 ═══════════════════════════════════════════ */
 @media (max-width: 900px) {
@@ -1051,13 +1041,13 @@ footer {
     </h1>
 
     <p class="hero-title">
-      <strong>Full Stack Developer</strong> &amp; Cloud Architect
+      <strong>Full Stack Developer</strong> · Python &amp; Node.js / Next.js
     </p>
 
     <p class="hero-desc">
-      3+ years shipping scalable platforms, microservices, and
-      real-time data pipelines. From IoT sensor networks to
-      enterprise-grade document security — I build systems that hold.
+      3+ years shipping secure API platforms, real-time data pipelines,
+      and SaaS products — from Zero-Trust authentication and IoT sensor
+      networks to LLM-powered agents. I build systems that hold.
     </p>
 
     <div class="hero-actions">
@@ -1091,25 +1081,25 @@ footer {
           Building <em>Scalable</em><br/>Systems that Last
         </h2>
         <p>
-          I'm a full-stack developer with a focus on <strong>distributed systems, cloud-native architectures, and enterprise security</strong>. My work spans IoT monitoring platforms, centralized authentication systems, and secure document management — each designed for real-world production scale.
+          I'm a full-stack developer focused on <strong>distributed systems, API security, and real-time data</strong>. My production work spans Zero-Trust authentication platforms, multi-tenant document management, and IoT monitoring — built with Python (Django, FastAPI) on the backend and React on the frontend.
+        </p>
+        <p>
+          Lately I've gone deep on the <strong>Node.js / Next.js / TypeScript</strong> ecosystem — shipping SaaS products with Express, Prisma, and Supabase PostgreSQL, and building LLM-powered features with streaming and RAG-style context assembly.
         </p>
         <p>
           My engineering foundation started in Mechanical at JNTU Kakinada. I pivoted to software because <strong>building things that run at scale is more interesting than things that sit still</strong>. That mindset still drives every system I design.
         </p>
-        <p>
-          Currently at <strong>FactOps</strong> as a Full Stack Developer — shipping production features across security, compliance, and IoT domains.
-        </p>
 
         <div class="about-links">
-          <a href="mailto:hemanthdorepalli@gmail.com" class="about-link">
+          <a href="mailto:hemanthd0916@gmail.com" class="about-link">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
-            hemanthdorepalli@gmail.com
+            hemanthd0916@gmail.com
           </a>
-          <a href="https://linkedin.com/in/hemanth-dorepalli" target="_blank" class="about-link">
+          <a href="https://www.linkedin.com/in/hemanth-3b7a26295" target="_blank" rel="noopener" class="about-link">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
             LinkedIn
           </a>
-          <a href="https://github.com/hemanthdorepalli" target="_blank" class="about-link">
+          <a href="https://github.com/hemanthdorepalli" target="_blank" rel="noopener" class="about-link">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
             GitHub
           </a>
@@ -1124,22 +1114,22 @@ footer {
         <div class="stat-card">
           <div class="stat-num">3+</div>
           <div class="stat-label">Years Experience</div>
-          <div class="stat-desc">Full-stack & cloud-native development across multiple domains</div>
+          <div class="stat-desc">Full-stack development across security, IoT, and SaaS domains</div>
         </div>
         <div class="stat-card">
-          <div class="stat-num">5+</div>
+          <div class="stat-num">8+</div>
           <div class="stat-label">Production Projects</div>
-          <div class="stat-desc">IoT, fintech compliance, auth platforms, training systems</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">15+</div>
-          <div class="stat-label">Technologies</div>
-          <div class="stat-desc">From React & FastAPI to AWS, Docker, and Zero-Trust security</div>
+          <div class="stat-desc">Auth platforms, document security, IoT pipelines, AI agents, CRMs</div>
         </div>
         <div class="stat-card">
           <div class="stat-num">2</div>
+          <div class="stat-label">Tech Stacks</div>
+          <div class="stat-desc">Python (Django, FastAPI) and Node.js (Express, Next.js, TypeScript)</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">3</div>
           <div class="stat-label">Companies</div>
-          <div class="stat-desc">FactOps (current) and SocialTek Solutions</div>
+          <div class="stat-desc">FactOps, ZdotApps, and SocialTek Solutions</div>
         </div>
       </div>
 
@@ -1163,7 +1153,7 @@ footer {
       <div class="exp-item reveal">
         <div class="exp-meta">
           <div class="exp-company">FactOps Private Limited</div>
-          <div class="exp-period">Nov 2024 — Present</div>
+          <div class="exp-period">May 2025 — Present</div>
         </div>
         <div class="exp-role">Full Stack Developer</div>
 
@@ -1172,39 +1162,49 @@ footer {
           <div>
             <div class="exp-project-name">FACT.Safe — Document Management</div>
             <ul class="exp-bullets">
-              <li>Architected multi-tenant document vault on AWS S3 with server-side and application-level encryption; isolated storage per organization.</li>
-              <li>Designed RBAC with hierarchical roles (Admin → Manager → Associate) and fine-grained permission policies across tenants.</li>
-              <li>Implemented secure document sharing via expiring presigned URLs, access tokens, and restricted download/view enforcement.</li>
-              <li>Built async upload pipeline with validation, compression, versioning, metadata indexing, and full-text search.</li>
-              <li>Secured all APIs with JWT + Zero-Trust principles; cut query latency 40% via caching and index optimization.</li>
+              <li>Architected a multi-tenant document vault with row-level tenant isolation and encrypted AWS S3 storage — sub-100ms retrieval with zero unauthorized access.</li>
+              <li>Built per-user, per-category RBAC with an auditable delegation wizard, cutting permission management time by 60%.</li>
+              <li>Reduced API latency by 70% with Celery–Redis async pipelines, plus a service-layer architecture refactor across the Django codebase.</li>
             </ul>
             <div class="exp-tags">
-              <span class="exp-tag">FastAPI</span><span class="exp-tag">React</span><span class="exp-tag">PostgreSQL</span><span class="exp-tag">AWS S3</span><span class="exp-tag">Redis</span><span class="exp-tag">JWT</span>
+              <span class="exp-tag">Django</span><span class="exp-tag">React</span><span class="exp-tag">PostgreSQL</span><span class="exp-tag">AWS S3</span><span class="exp-tag">Celery</span><span class="exp-tag">Redis</span>
             </div>
           </div>
 
           <div>
             <div class="exp-project-name">FACT.Login — Centralized Auth</div>
             <ul class="exp-bullets">
-              <li>Built SSO across all products using OAuth2 / OIDC with JTI-based token rotation — one identity layer for the entire platform.</li>
-              <li>Zero-Trust architecture: device fingerprinting, IP allowlisting, session anomaly detection, and refresh token blacklisting.</li>
+              <li>Built SSO across 4 products using OAuth2/OIDC with JWT + JTI token rotation — one identity layer for the entire platform.</li>
+              <li>Three-layer Zero-Trust security: device fingerprinting, IP binding, and location anomaly detection, blocking suspicious sessions in under 200ms with a dual-layer Redis + PostgreSQL token blocklist.</li>
             </ul>
             <div class="exp-tags">
-              <span class="exp-tag">OAuth2</span><span class="exp-tag">OIDC</span><span class="exp-tag">Zero-Trust</span><span class="exp-tag">Django</span>
+              <span class="exp-tag">OAuth2</span><span class="exp-tag">OIDC</span><span class="exp-tag">Zero-Trust</span><span class="exp-tag">Django</span><span class="exp-tag">JWT</span>
             </div>
           </div>
 
+        </div>
+      </div>
+
+      <!-- ZdotApps -->
+      <div class="exp-item reveal">
+        <div class="exp-meta">
+          <div class="exp-company">ZdotApps Private Limited</div>
+          <div class="exp-period">Nov 2024 — May 2025</div>
+        </div>
+        <div class="exp-role">Full Stack Developer</div>
+
+        <div class="exp-projects">
           <div>
-            <div class="exp-project-name">Weewa — IoT Platform</div>
+            <div class="exp-project-name">Weewa — Real-Time IoT Platform</div>
             <ul class="exp-bullets">
-              <li>Real-time IoT monitoring with FastAPI microservices, WebSocket data streaming, and PostgreSQL time-series storage.</li>
-              <li>React dashboards with map-based live sensor visualization; CI/CD automated via Docker + GitHub Actions.</li>
+              <li>Delivered a real-time IoT monitoring platform processing 100+ daily sensor readings (weather, energy, water) from LoRaWAN and cellular sensors across 20+ remote locations.</li>
+              <li>Engineered WebSocket streaming to React dashboards, cutting data refresh lag from 5 minutes to under 2 seconds.</li>
+              <li>Built sensor-health alerting (WhatsApp/email within 20 minutes of data gaps), reducing failure detection time by 80%; adopted RabbitMQ as Celery broker for zero task loss during restarts.</li>
             </ul>
             <div class="exp-tags">
-              <span class="exp-tag">FastAPI</span><span class="exp-tag">WebSockets</span><span class="exp-tag">React</span><span class="exp-tag">Docker</span><span class="exp-tag">GitHub Actions</span>
+              <span class="exp-tag">FastAPI</span><span class="exp-tag">WebSockets</span><span class="exp-tag">Celery</span><span class="exp-tag">RabbitMQ</span><span class="exp-tag">React</span><span class="exp-tag">Pandas</span>
             </div>
           </div>
-
         </div>
       </div>
 
@@ -1216,12 +1216,11 @@ footer {
         </div>
         <div class="exp-role">Technical Trainer</div>
         <ul class="exp-bullets">
-          <li>Built and maintained full-stack applications in Spring Boot + React + MySQL following MVC architecture.</li>
-          <li>Developed secure REST APIs and authentication systems; set up CI/CD pipelines and AWS deployments.</li>
-          <li>Trained junior developers on software engineering best practices, code review, and system design fundamentals.</li>
+          <li>Coached 50+ students across 6 batches in full-stack development (Spring Boot, React, MySQL) with an 85% placement rate.</li>
+          <li>Built 15+ demo applications — REST APIs, JWT authentication, MVC architecture, AWS deployments — used as curriculum references.</li>
         </ul>
         <div class="exp-tags">
-          <span class="exp-tag">Spring Boot</span><span class="exp-tag">React</span><span class="exp-tag">MySQL</span><span class="exp-tag">AWS</span><span class="exp-tag">CI/CD</span>
+          <span class="exp-tag">Spring Boot</span><span class="exp-tag">React</span><span class="exp-tag">MySQL</span><span class="exp-tag">AWS</span>
         </div>
       </div>
 
@@ -1242,59 +1241,89 @@ footer {
     <div class="projects-grid">
 
       <div class="proj-card reveal" data-accent="indigo">
-        <div class="proj-icon" style="background:rgba(99,102,241,.1)">🔐</div>
-        <div class="proj-title">FACT.Safe</div>
+        <div class="proj-icon" style="background:rgba(99,102,241,.1)">📋</div>
+        <div class="proj-title">Software Leads<span class="proj-badge">New</span></div>
         <p class="proj-desc">
-          Enterprise multi-tenant document management platform. Encrypted vaults on AWS S3, RBAC with granular permissions, expiring share links, full audit trails, and async full-text search pipeline.
+          SaaS CRM for a software development company covering the full client project lifecycle — lead intake, requirements, cost estimation, developer assignment, payment tracking, and automated PDF proposal generation.
         </p>
         <div class="proj-tags">
-          <span class="proj-tag-pill pill-indigo">FastAPI</span>
-          <span class="proj-tag-pill pill-cyan">React</span>
-          <span class="proj-tag-pill pill-pink">AWS S3</span>
-          <span class="proj-tag-pill pill-amber">PostgreSQL</span>
-          <span class="proj-tag-pill pill-green">Redis</span>
+          <span class="proj-tag-pill pill-indigo">Next.js</span>
+          <span class="proj-tag-pill pill-cyan">TypeScript</span>
+          <span class="proj-tag-pill pill-pink">Prisma</span>
+          <span class="proj-tag-pill pill-green">Supabase</span>
+          <span class="proj-tag-pill pill-amber">Node.js</span>
         </div>
       </div>
 
       <div class="proj-card reveal" data-accent="pink">
-        <div class="proj-icon" style="background:rgba(236,72,153,.1)">🛡️</div>
-        <div class="proj-title">FACT.Login</div>
+        <div class="proj-icon" style="background:rgba(236,72,153,.1)">🧠</div>
+        <div class="proj-title">BRAHMO Composition Agent<span class="proj-badge">New</span></div>
         <p class="proj-desc">
-          Centralized SSO platform for cross-product authentication. OAuth2/OIDC with JTI token rotation, device binding, IP validation, session anomaly detection, and refresh token blacklisting.
+          Healthcare AI context-assembly system: 27 hospital knowledge nodes composed into structured LLM context under a hard 4,000-token budget, with Groq streaming responses and protected safety-critical rules.
         </p>
         <div class="proj-tags">
-          <span class="proj-tag-pill pill-pink">OAuth2</span>
-          <span class="proj-tag-pill pill-indigo">OIDC</span>
-          <span class="proj-tag-pill pill-cyan">JWT</span>
-          <span class="proj-tag-pill pill-amber">Zero-Trust</span>
+          <span class="proj-tag-pill pill-pink">FastAPI</span>
+          <span class="proj-tag-pill pill-indigo">Next.js</span>
+          <span class="proj-tag-pill pill-cyan">Groq LLM</span>
+          <span class="proj-tag-pill pill-green">Supabase</span>
+          <span class="proj-tag-pill pill-amber">RAG</span>
         </div>
       </div>
 
       <div class="proj-card reveal" data-accent="green">
-        <div class="proj-icon" style="background:rgba(16,185,129,.1)">📡</div>
-        <div class="proj-title">Weewa IoT Platform</div>
+        <div class="proj-icon" style="background:rgba(16,185,129,.1)">🔐</div>
+        <div class="proj-title">FACT.Safe</div>
         <p class="proj-desc">
-          Real-time IoT monitoring system. WebSocket live sensor streaming, time-series data storage, React map dashboards, automated Docker + GitHub Actions CI/CD pipeline.
+          Enterprise multi-tenant document management. Encrypted vaults on AWS S3, row-level tenant isolation, granular RBAC with delegation, and Celery–Redis async pipelines.
         </p>
         <div class="proj-tags">
-          <span class="proj-tag-pill pill-green">FastAPI</span>
-          <span class="proj-tag-pill pill-cyan">WebSockets</span>
-          <span class="proj-tag-pill pill-indigo">React</span>
-          <span class="proj-tag-pill pill-amber">Docker</span>
+          <span class="proj-tag-pill pill-green">Django</span>
+          <span class="proj-tag-pill pill-cyan">React</span>
+          <span class="proj-tag-pill pill-pink">AWS S3</span>
+          <span class="proj-tag-pill pill-amber">PostgreSQL</span>
+          <span class="proj-tag-pill pill-indigo">Redis</span>
         </div>
       </div>
 
       <div class="proj-card reveal" data-accent="amber">
-        <div class="proj-icon" style="background:rgba(245,158,11,.1)">🏗️</div>
-        <div class="proj-title">LMS Training Platform</div>
+        <div class="proj-icon" style="background:rgba(245,158,11,.1)">🛡️</div>
+        <div class="proj-title">FACT.Login</div>
         <p class="proj-desc">
-          Full-stack learning management system. Spring Boot backend with MVC architecture, secure JWT auth, REST APIs, MySQL data layer, and CI/CD deployed on AWS.
+          Centralized SSO platform for cross-product authentication. OAuth2/OIDC with JTI token rotation, device binding, IP validation, session anomaly detection, and dual-layer token blocklisting.
         </p>
         <div class="proj-tags">
-          <span class="proj-tag-pill pill-amber">Spring Boot</span>
-          <span class="proj-tag-pill pill-cyan">React</span>
-          <span class="proj-tag-pill pill-pink">MySQL</span>
-          <span class="proj-tag-pill pill-indigo">AWS</span>
+          <span class="proj-tag-pill pill-amber">OAuth2</span>
+          <span class="proj-tag-pill pill-indigo">OIDC</span>
+          <span class="proj-tag-pill pill-cyan">JWT</span>
+          <span class="proj-tag-pill pill-pink">Zero-Trust</span>
+        </div>
+      </div>
+
+      <div class="proj-card reveal" data-accent="indigo">
+        <div class="proj-icon" style="background:rgba(99,102,241,.1)">📡</div>
+        <div class="proj-title">Weewa IoT Platform</div>
+        <p class="proj-desc">
+          Real-time IoT monitoring system. WebSocket live sensor streaming, Celery/RabbitMQ data pipelines with zero task loss, React map dashboards, and automated sensor-health alerting.
+        </p>
+        <div class="proj-tags">
+          <span class="proj-tag-pill pill-indigo">FastAPI</span>
+          <span class="proj-tag-pill pill-cyan">WebSockets</span>
+          <span class="proj-tag-pill pill-green">RabbitMQ</span>
+          <span class="proj-tag-pill pill-amber">React</span>
+        </div>
+      </div>
+
+      <div class="proj-card reveal" data-accent="pink">
+        <div class="proj-icon" style="background:rgba(236,72,153,.1)">💍</div>
+        <div class="proj-title">MilanSetu</div>
+        <p class="proj-desc">
+          Matrimony platform built and delivered as a freelance project — profile matching, search and filtering, responsive pure-CSS design, deployed to production on Vercel.
+        </p>
+        <div class="proj-tags">
+          <span class="proj-tag-pill pill-pink">React</span>
+          <span class="proj-tag-pill pill-cyan">Vite</span>
+          <span class="proj-tag-pill pill-indigo">CSS</span>
+          <span class="proj-tag-pill pill-green">Vercel</span>
         </div>
       </div>
 
@@ -1317,9 +1346,20 @@ footer {
       <div class="skill-block">
         <div class="skill-block-title">Languages</div>
         <div class="skill-pills">
-          <span class="sk-pill"><span class="sk-dot" style="background:#f7df1e"></span>JavaScript</span>
           <span class="sk-pill"><span class="sk-dot" style="background:#3776ab"></span>Python</span>
+          <span class="sk-pill"><span class="sk-dot" style="background:#f7df1e"></span>JavaScript</span>
+          <span class="sk-pill"><span class="sk-dot" style="background:#3178c6"></span>TypeScript</span>
           <span class="sk-pill"><span class="sk-dot" style="background:#007396"></span>Java</span>
+        </div>
+      </div>
+
+      <div class="skill-block">
+        <div class="skill-block-title">Backend</div>
+        <div class="skill-pills">
+          <span class="sk-pill"><span class="sk-dot" style="background:#092e20"></span>Django</span>
+          <span class="sk-pill"><span class="sk-dot" style="background:#009688"></span>FastAPI</span>
+          <span class="sk-pill"><span class="sk-dot" style="background:#68a063"></span>Node.js</span>
+          <span class="sk-pill"><span class="sk-dot" style="background:#888"></span>Express</span>
         </div>
       </div>
 
@@ -1327,41 +1367,37 @@ footer {
         <div class="skill-block-title">Frontend</div>
         <div class="skill-pills">
           <span class="sk-pill"><span class="sk-dot" style="background:#61dafb"></span>React</span>
-          <span class="sk-pill"><span class="sk-dot" style="background:#e34c26"></span>HTML5</span>
-          <span class="sk-pill"><span class="sk-dot" style="background:#264de4"></span>CSS3</span>
+          <span class="sk-pill"><span class="sk-dot" style="background:#eee"></span>Next.js</span>
+          <span class="sk-pill"><span class="sk-dot" style="background:#646cff"></span>Vite</span>
+          <span class="sk-pill"><span class="sk-dot" style="background:#38bdf8"></span>Tailwind</span>
         </div>
       </div>
 
       <div class="skill-block">
-        <div class="skill-block-title">Backend</div>
-        <div class="skill-pills">
-          <span class="sk-pill"><span class="sk-dot" style="background:#009688"></span>FastAPI</span>
-          <span class="sk-pill"><span class="sk-dot" style="background:#092e20"></span>Django</span>
-          <span class="sk-pill"><span class="sk-dot" style="background:#6db33f"></span>Spring Boot</span>
-        </div>
-      </div>
-
-      <div class="skill-block">
-        <div class="skill-block-title">Databases</div>
+        <div class="skill-block-title">Databases &amp; ORM</div>
         <div class="skill-pills">
           <span class="sk-pill"><span class="sk-dot" style="background:#336791"></span>PostgreSQL</span>
-          <span class="sk-pill"><span class="sk-dot" style="background:#00758f"></span>MySQL</span>
+          <span class="sk-pill"><span class="sk-dot" style="background:#3ecf8e"></span>Supabase</span>
+          <span class="sk-pill"><span class="sk-dot" style="background:#5a67d8"></span>Prisma</span>
           <span class="sk-pill"><span class="sk-dot" style="background:#dc382d"></span>Redis</span>
+          <span class="sk-pill"><span class="sk-dot" style="background:#00758f"></span>MySQL</span>
         </div>
       </div>
 
       <div class="skill-block">
-        <div class="skill-block-title">Cloud & DevOps</div>
+        <div class="skill-block-title">Cloud &amp; DevOps</div>
         <div class="skill-pills">
           <span class="sk-pill"><span class="sk-dot" style="background:#ff9900"></span>AWS</span>
           <span class="sk-pill"><span class="sk-dot" style="background:#2496ed"></span>Docker</span>
           <span class="sk-pill"><span class="sk-dot" style="background:#24292e"></span>GitHub Actions</span>
+          <span class="sk-pill"><span class="sk-dot" style="background:#46e3b7"></span>Render</span>
+          <span class="sk-pill"><span class="sk-dot" style="background:#eee"></span>Vercel</span>
           <span class="sk-pill"><span class="sk-dot" style="background:#333"></span>Linux</span>
         </div>
       </div>
 
       <div class="skill-block">
-        <div class="skill-block-title">Security & Arch</div>
+        <div class="skill-block-title">Security</div>
         <div class="skill-pills">
           <span class="sk-pill"><span class="sk-dot" style="background:#6366f1"></span>JWT</span>
           <span class="sk-pill"><span class="sk-dot" style="background:#22d3ee"></span>OAuth2</span>
@@ -1372,22 +1408,24 @@ footer {
       </div>
 
       <div class="skill-block">
-        <div class="skill-block-title">Architecture</div>
+        <div class="skill-block-title">Distributed &amp; Async</div>
         <div class="skill-pills">
-          <span class="sk-pill"><span class="sk-dot" style="background:#6366f1"></span>Microservices</span>
-          <span class="sk-pill"><span class="sk-dot" style="background:#22d3ee"></span>REST APIs</span>
+          <span class="sk-pill"><span class="sk-dot" style="background:#37814a"></span>Celery</span>
+          <span class="sk-pill"><span class="sk-dot" style="background:#ff6600"></span>RabbitMQ</span>
           <span class="sk-pill"><span class="sk-dot" style="background:#ec4899"></span>WebSockets</span>
-          <span class="sk-pill"><span class="sk-dot" style="background:#10b981"></span>CI/CD</span>
+          <span class="sk-pill"><span class="sk-dot" style="background:#68a063"></span>Worker Threads</span>
+          <span class="sk-pill"><span class="sk-dot" style="background:#6366f1"></span>Microservices</span>
         </div>
       </div>
 
       <div class="skill-block">
-        <div class="skill-block-title">Tools</div>
+        <div class="skill-block-title">AI &amp; Automation</div>
         <div class="skill-pills">
-          <span class="sk-pill"><span class="sk-dot" style="background:#f05033"></span>Git</span>
-          <span class="sk-pill"><span class="sk-dot" style="background:#007acc"></span>VS Code</span>
-          <span class="sk-pill"><span class="sk-dot" style="background:#ff6c37"></span>Postman</span>
-          <span class="sk-pill"><span class="sk-dot" style="background:#2c2c2c"></span>WSL</span>
+          <span class="sk-pill"><span class="sk-dot" style="background:#f55036"></span>Groq LLM</span>
+          <span class="sk-pill"><span class="sk-dot" style="background:#22d3ee"></span>RAG</span>
+          <span class="sk-pill"><span class="sk-dot" style="background:#10b981"></span>LLM Streaming</span>
+          <span class="sk-pill"><span class="sk-dot" style="background:#ea4b71"></span>n8n</span>
+          <span class="sk-pill"><span class="sk-dot" style="background:#6366f1"></span>MCP</span>
         </div>
       </div>
 
@@ -1410,38 +1448,38 @@ footer {
       </div>
 
       <div class="contact-cards reveal">
-        <div class="contact-card cc-1">
+        <a class="contact-card cc-1" href="mailto:hemanthd0916@gmail.com">
           <div class="cc-icon" style="background:rgba(99,102,241,.12)">📧</div>
           <div class="cc-info">
             <div class="cc-label">Email</div>
-            <div class="cc-value">hemanthdorepalli@gmail.com</div>
+            <div class="cc-value">hemanthd0916@gmail.com</div>
           </div>
-        </div>
-        <div class="contact-card cc-2">
+        </a>
+        <a class="contact-card cc-2" href="https://www.linkedin.com/in/hemanth-3b7a26295" target="_blank" rel="noopener">
           <div class="cc-icon" style="background:rgba(34,211,238,.12)">💼</div>
           <div class="cc-info">
             <div class="cc-label">LinkedIn</div>
-            <div class="cc-value">hemanth-dorepalli</div>
+            <div class="cc-value">hemanth-3b7a26295</div>
           </div>
-        </div>
-        <div class="contact-card cc-3">
+        </a>
+        <a class="contact-card cc-3" href="https://github.com/hemanthdorepalli" target="_blank" rel="noopener">
           <div class="cc-icon" style="background:rgba(236,72,153,.12)">💻</div>
           <div class="cc-info">
             <div class="cc-label">GitHub</div>
             <div class="cc-value">hemanthdorepalli</div>
           </div>
-        </div>
-        <div class="contact-card cc-4">
+        </a>
+        <a class="contact-card cc-4" href="tel:+916304308402">
           <div class="cc-icon" style="background:rgba(245,158,11,.12)">📱</div>
           <div class="cc-info">
             <div class="cc-label">Phone</div>
             <div class="cc-value">+91 6304308402</div>
           </div>
-        </div>
+        </a>
       </div>
 
       <div class="reveal">
-        <a href="mailto:hemanthdorepalli@gmail.com" class="btn-fill" style="margin:0 auto;width:fit-content;display:inline-flex">
+        <a href="mailto:hemanthd0916@gmail.com" class="btn-fill" style="margin:0 auto;width:fit-content;display:inline-flex">
           <span>Send a Message</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
         </a>
@@ -1453,7 +1491,7 @@ footer {
 <!-- FOOTER -->
 <footer>
   <div class="footer-brand">HD<span>.</span></div>
-  <div class="footer-copy">© 2025 Hemanth Dorepalli · Full Stack Developer · Hyderabad, India</div>
+  <div class="footer-copy">© 2026 Hemanth Dorepalli · Full Stack Developer · Andhra Pradesh, India</div>
 </footer>
 
 <!-- ══════════════════════════════════════════════════════════
@@ -1477,6 +1515,9 @@ footer {
    MODULE 2 — CUSTOM CURSOR
 ═══════════════════════════════════════ */
 (function CursorModule() {
+  // Skip entirely on touch devices
+  if (window.matchMedia('(hover: none), (pointer: coarse)').matches) return;
+
   const dot  = document.getElementById('cur-dot');
   const ring = document.getElementById('cur-ring');
   let mx = 0, my = 0, rx = 0, ry = 0;
@@ -1487,7 +1528,6 @@ footer {
     dot.style.top  = my + 'px';
   });
 
-  // Ring lags behind with lerp
   (function lerp() {
     rx += (mx - rx) * 0.1;
     ry += (my - ry) * 0.1;
@@ -1496,7 +1536,6 @@ footer {
     requestAnimationFrame(lerp);
   })();
 
-  // Hover state
   document.querySelectorAll('a, button, .proj-card, .stat-card, .sk-pill').forEach(el => {
     el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
     el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
@@ -1511,12 +1550,10 @@ footer {
   const hb  = document.getElementById('hamburger');
   const mm  = document.getElementById('mobile-menu');
 
-  // Solid background on scroll
   window.addEventListener('scroll', () => {
     nav.classList.toggle('solid', window.scrollY > 50);
   }, { passive: true });
 
-  // Active link highlight
   const sections = document.querySelectorAll('section[id]');
   const navLinks  = document.querySelectorAll('.nav-links a');
 
@@ -1532,7 +1569,6 @@ footer {
 
   sections.forEach(s => sectionObserver.observe(s));
 
-  // Hamburger
   hb.addEventListener('click', () => {
     mm.classList.toggle('open');
   });
@@ -1546,13 +1582,12 @@ footer {
 ═══════════════════════════════════════ */
 (function RevealModule() {
   const observer = new IntersectionObserver(entries => {
-    entries.forEach((entry, i) => {
+    entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        // Stagger within grid containers
         const parent = entry.target.parentElement;
         const siblings = parent ? [...parent.querySelectorAll('.reveal, .reveal-left')] : [];
         const idx = siblings.indexOf(entry.target);
-        const delay = (idx % 4) * 80; // max 4-col stagger
+        const delay = (idx % 4) * 80;
 
         setTimeout(() => entry.target.classList.add('show'), delay);
         observer.unobserve(entry.target);
@@ -1565,22 +1600,18 @@ footer {
 
 /* ═══════════════════════════════════════════════════════════════
    MODULE 5 — THREE.JS GLOBE
-   ─────────────────────────────────────────────────────────────
-   Architecture:
-   ① Globe mesh — IcosahedronGeometry with displacement sculpting
-     to simulate a non-smooth planetary surface
-   ② Lat/lon grid line overlay — LineSegments on sphere surface
-   ③ Atmosphere glow — transparent sphere, additive blending
-   ④ Particle cloud — 2000 points orbiting at varying radii
-   ⑤ Arc lines — great-circle paths connecting random lat/lons
-   ⑥ Lights — ambient + 2 coloured point lights
-   ⑦ Mouse parallax — subtle camera lean toward cursor
-   ⑧ Scroll shrink — globe scales down on scroll
-   ⑨ IntersectionObserver — pause RAF when out of view
+   ① Globe mesh — displaced icosahedron
+   ② Lat/lon grid overlay
+   ③ Atmosphere glow
+   ④ Particle cloud
+   ⑤ Arc lines (great-circle paths)
+   ⑥ Lights
+   ⑦ Mouse parallax
+   ⑧ Scroll shrink
+   ⑨ Visibility pause
 ═══════════════════════════════════════════════════════════════ */
 (function GlobeModule() {
 
-  /* ── Wait for Three.js CDN script ── */
   function waitThree(cb, n) {
     if (typeof THREE !== 'undefined') return cb();
     if ((n = (n||0) + 1) > 60) return console.warn('Three.js CDN load failed');
@@ -1592,7 +1623,6 @@ footer {
     const canvas   = document.getElementById('globe-canvas');
     const heroEl   = document.getElementById('hero');
 
-    /* ── Renderer setup ── */
     const renderer = new THREE.WebGLRenderer({
       canvas,
       antialias: true,
@@ -1606,7 +1636,6 @@ footer {
     const camera = new THREE.PerspectiveCamera(40, 1, 0.1, 100);
     camera.position.set(0, 0, 5);
 
-    /* ── Resize ── */
     function resize() {
       const w = heroEl.clientWidth;
       const h = heroEl.clientHeight;
@@ -1617,19 +1646,15 @@ footer {
     resize();
     window.addEventListener('resize', resize, { passive: true });
 
-    /* ── Colour palette ── */
     const C_INDIGO = new THREE.Color('#6366f1');
     const C_CYAN   = new THREE.Color('#22d3ee');
     const C_PINK   = new THREE.Color('#ec4899');
 
-    /* ════════════════════════════════════
-       ① GLOBE — displaced icosahedron
-    ════════════════════════════════════ */
+    /* ① GLOBE */
     const GEO_DETAIL = window.innerWidth < 768 ? 32 : 48;
     const globeGeo = new THREE.IcosahedronGeometry(1.4, GEO_DETAIL > 32 ? 7 : 5);
     const pos = globeGeo.attributes.position;
 
-    // Multi-octave displacement using trig products (no noise lib needed)
     const displaceV = (x, y, z, f) =>
       Math.sin(x * f + 0.3) * Math.cos(y * f + 0.5) * Math.sin(z * f + 0.8);
 
@@ -1638,25 +1663,22 @@ footer {
       const r = Math.sqrt(x*x + y*y + z*z);
       const nx = x/r, ny = y/r, nz = z/r;
 
-      // 3-octave displacement — surface bumps
       const d =
         displaceV(nx, ny, nz, 2.8)  * 0.042 +
         displaceV(nx, ny, nz, 5.6)  * 0.022 +
         displaceV(nx, ny, nz, 11.2) * 0.010;
 
-      // Slight polar flattening (oblate spheroid feel)
       const poleFactor = 1 - Math.abs(ny) * 0.04;
 
       pos.setXYZ(i, nx*(1.4 + d)*poleFactor, ny*(1.4 + d)*poleFactor, nz*(1.4 + d)*poleFactor);
     }
     globeGeo.computeVertexNormals();
 
-    // Vertex colours: deep blue oceans → purple ridges → cyan peaks
     const colAttr = new THREE.BufferAttribute(new Float32Array(pos.count * 3), 3);
     for (let i = 0; i < pos.count; i++) {
       const x = pos.getX(i), y = pos.getY(i), z = pos.getZ(i);
       const r = Math.sqrt(x*x+y*y+z*z);
-      const elev = (r - 1.38) / 0.06; // 0 = ocean, 1 = peak
+      const elev = (r - 1.38) / 0.06;
       const t = Math.max(0, Math.min(1, elev));
       const c = new THREE.Color();
       if (t < 0.35)      c.lerpColors(new THREE.Color('#0a0a2e'), new THREE.Color('#1a1a5c'), t / 0.35);
@@ -1674,16 +1696,12 @@ footer {
     const globeMesh = new THREE.Mesh(globeGeo, globeMat);
     scene.add(globeMesh);
 
-    /* ════════════════════════════════════
-       ② LAT / LON GRID OVERLAY
-       Lines sit just above the sphere surface
-    ════════════════════════════════════ */
+    /* ② GRID */
     function buildGrid() {
       const pts = [];
-      const R = 1.405; // just above globe surface
+      const R = 1.405;
       const SEGS = 64;
 
-      // Latitude lines (horizontal circles)
       for (let lat = -75; lat <= 75; lat += 15) {
         const phi = (90 - lat) * Math.PI / 180;
         for (let i = 0; i < SEGS; i++) {
@@ -1696,7 +1714,6 @@ footer {
         }
       }
 
-      // Longitude lines (vertical circles)
       for (let lon = 0; lon < 360; lon += 15) {
         const theta = lon * Math.PI / 180;
         for (let i = 0; i < SEGS; i++) {
@@ -1717,11 +1734,7 @@ footer {
     const gridLines = buildGrid();
     scene.add(gridLines);
 
-    /* ════════════════════════════════════
-       ③ ATMOSPHERE GLOW
-       Large additive-blended sphere creates
-       a bloom halo effect without post-processing
-    ════════════════════════════════════ */
+    /* ③ ATMOSPHERE */
     function makeAtmoSphere(radius, color, opacity) {
       const geo = new THREE.SphereGeometry(radius, 32, 32);
       const mat = new THREE.MeshBasicMaterial({
@@ -1734,15 +1747,11 @@ footer {
       });
       return new THREE.Mesh(geo, mat);
     }
-    scene.add(makeAtmoSphere(1.55, 0x3b3bff, 0.08));  // inner indigo glow
-    scene.add(makeAtmoSphere(1.72, 0x22d3ee, 0.045)); // outer cyan haze
-    scene.add(makeAtmoSphere(1.90, 0x0000aa, 0.025)); // deep blue outer halo
+    scene.add(makeAtmoSphere(1.55, 0x3b3bff, 0.08));
+    scene.add(makeAtmoSphere(1.72, 0x22d3ee, 0.045));
+    scene.add(makeAtmoSphere(1.90, 0x0000aa, 0.025));
 
-    /* ════════════════════════════════════
-       ④ PARTICLE CLOUD
-       2000 particles on a sphere shell with
-       random radii offsets to create depth
-    ════════════════════════════════════ */
+    /* ④ PARTICLES */
     const PART_COUNT = window.innerWidth < 768 ? 1200 : 2200;
     const pArr = new Float32Array(PART_COUNT * 3);
     const pCol = new Float32Array(PART_COUNT * 3);
@@ -1751,7 +1760,7 @@ footer {
     for (let i = 0; i < PART_COUNT; i++) {
       const theta = Math.random() * Math.PI * 2;
       const phi   = Math.acos(2 * Math.random() - 1);
-      const r     = 1.6 + Math.random() * 0.9; // shell between 1.6 → 2.5
+      const r     = 1.6 + Math.random() * 0.9;
       pArr[i*3]   = r * Math.sin(phi) * Math.cos(theta);
       pArr[i*3+1] = r * Math.sin(phi) * Math.sin(theta);
       pArr[i*3+2] = r * Math.cos(phi);
@@ -1773,12 +1782,7 @@ footer {
     const particles = new THREE.Points(partGeo, partMat);
     scene.add(particles);
 
-    /* ════════════════════════════════════
-       ⑤ ARC LINES
-       Geodesic arcs connecting lat/lon pairs —
-       built as QuadraticBezierCurve3 elevated
-       above the surface
-    ════════════════════════════════════ */
+    /* ⑤ ARCS */
     function latLonToVec(lat, lon, r) {
       const phi   = (90 - lat) * Math.PI / 180;
       const theta = (lon + 180) * Math.PI / 180;
@@ -1790,14 +1794,14 @@ footer {
     }
 
     const arcPairs = [
-      [[28, 77], [51, 0]],    // Delhi → London
-      [[37, -122], [35, 139]], // SF → Tokyo
-      [[55, 37], [-34, 151]], // Moscow → Sydney
-      [[1, 103], [48, 2]],   // Singapore → Paris
-      [[19, 72], [40, -74]], // Mumbai → NY
-      [[-23, -46], [52, 13]], // São Paulo → Berlin
-      [[31, 121], [34, -118]], // Shanghai → LA
-      [[30, 31], [59, 18]],  // Cairo → Stockholm
+      [[28, 77], [51, 0]],
+      [[37, -122], [35, 139]],
+      [[55, 37], [-34, 151]],
+      [[1, 103], [48, 2]],
+      [[19, 72], [40, -74]],
+      [[-23, -46], [52, 13]],
+      [[31, 121], [34, -118]],
+      [[30, 31], [59, 18]],
     ];
 
     const arcGroup = new THREE.Group();
@@ -1805,7 +1809,7 @@ footer {
       const vA = latLonToVec(a[0], a[1], 1.42);
       const vB = latLonToVec(b[0], b[1], 1.42);
       const mid = vA.clone().add(vB).multiplyScalar(0.5);
-      const elev = mid.length() * (1 + 0.35); // lift midpoint above surface
+      const elev = mid.length() * (1 + 0.35);
       mid.normalize().multiplyScalar(elev);
 
       const curve = new THREE.QuadraticBezierCurve3(vA, mid, vB);
@@ -1819,7 +1823,6 @@ footer {
       });
       arcGroup.add(new THREE.Line(geo, mat));
 
-      // Add node dots at endpoints
       [vA, vB].forEach(v => {
         const dg = new THREE.SphereGeometry(0.016, 6, 6);
         const dm = new THREE.MeshBasicMaterial({ color: 0x22d3ee, transparent: true, opacity: 0.7 });
@@ -1830,61 +1833,45 @@ footer {
     });
     scene.add(arcGroup);
 
-    /* ════════════════════════════════════
-       ⑥ LIGHTING
-    ════════════════════════════════════ */
+    /* ⑥ LIGHTS */
     scene.add(new THREE.AmbientLight(0xffffff, 0.18));
 
-    // Key light — indigo from upper left
     const keyLight = new THREE.PointLight(0x5a5fff, 5.0, 18);
     keyLight.position.set(-3, 2.5, 3);
     scene.add(keyLight);
 
-    // Rim light — cyan from lower right
     const rimLight = new THREE.PointLight(0x22d3ee, 3.5, 14);
     rimLight.position.set(3, -1.5, 1.5);
     scene.add(rimLight);
 
-    // Back fill — pink from behind
     const backLight = new THREE.PointLight(0xec4899, 1.8, 10);
     backLight.position.set(0, 0, -4);
     scene.add(backLight);
 
-    /* ════════════════════════════════════
-       ⑦ MOUSE PARALLAX
-    ════════════════════════════════════ */
+    /* ⑦ MOUSE PARALLAX */
     let targetCamX = 0, targetCamY = 0;
     let currentCamX = 0, currentCamY = 0;
 
     document.addEventListener('mousemove', e => {
-      // Normalize to -0.5..0.5
       targetCamX = (e.clientX / window.innerWidth  - 0.5) * 0.6;
       targetCamY = (e.clientY / window.innerHeight - 0.5) * 0.4;
     }, { passive: true });
 
-    /* ════════════════════════════════════
-       ⑧ SCROLL PARALLAX
-       Globe repositions and scales on scroll
-    ════════════════════════════════════ */
+    /* ⑧ SCROLL */
     let scrollY = 0;
     window.addEventListener('scroll', () => {
       scrollY = window.scrollY;
     }, { passive: true });
 
-    /* ════════════════════════════════════
-       ⑨ VISIBILITY PAUSE
-    ════════════════════════════════════ */
+    /* ⑨ VISIBILITY */
     let isVisible = true;
     new IntersectionObserver(
       entries => isVisible = entries[0].isIntersecting,
       { threshold: 0.05 }
     ).observe(heroEl);
 
-    /* ════════════════════════════════════
-       ANIMATION LOOP
-    ════════════════════════════════════ */
+    /* LOOP */
     let t = 0;
-    // Arc opacity animation: fade each arc in/out over time
     const arcLines = arcGroup.children.filter(c => c.type === 'Line');
     const arcPhases = arcLines.map(() => Math.random() * Math.PI * 2);
 
@@ -1894,25 +1881,20 @@ footer {
 
       t += 0.006;
 
-      /* Globe auto-rotation */
       globeMesh.rotation.y += 0.0018;
       gridLines.rotation.y  = globeMesh.rotation.y;
       arcGroup.rotation.y   = globeMesh.rotation.y;
 
-      /* Particle slow counter-rotation */
       particles.rotation.y -= 0.0006;
       particles.rotation.x += 0.0002;
 
-      /* Mouse parallax — camera lean */
       currentCamX += (targetCamX - currentCamX) * 0.04;
       currentCamY += (targetCamY - currentCamY) * 0.04;
 
-      /* Scroll effects */
       const heroH   = heroEl.clientHeight;
-      const scrollT = Math.min(scrollY / (heroH * 0.8), 1); // 0..1
+      const scrollT = Math.min(scrollY / (heroH * 0.8), 1);
 
-      // Globe moves right and shrinks as you scroll out
-      const globeX    = scrollT * 0.8;
+      const globeX     = scrollT * 0.8;
       const globeScale = 1 - scrollT * 0.18;
 
       camera.position.set(
@@ -1922,31 +1904,22 @@ footer {
       );
       camera.lookAt(globeX * 0.3, 0, 0);
 
-      // Scale via group
       globeMesh.scale.setScalar(globeScale);
       gridLines.scale.setScalar(globeScale);
       arcGroup.scale.setScalar(globeScale);
       particles.scale.setScalar(globeScale + 0.05);
 
-      // Fade atmosphere with scroll
-      const atmoOpacity = 1 - scrollT * 0.6;
-      scene.children
-        .filter(c => c.type === 'Mesh' && c.material && c.material.side === THREE.BackSide)
-        .forEach(c => c.material.opacity = c.material.opacity * atmoOpacity / Math.max(atmoOpacity, 0.001));
-
-      /* Arc pulse animations */
       arcLines.forEach((arc, i) => {
         arc.material.opacity = 0.15 + 0.18 * Math.sin(t * 1.2 + arcPhases[i]);
       });
 
-      /* Key light gentle orbit */
       keyLight.position.x = Math.cos(t * 0.3) * 3 - 1;
       keyLight.position.z = Math.sin(t * 0.3) * 2 + 2;
 
       renderer.render(scene, camera);
     })();
 
-  }); // end waitThree
+  });
 })();
 
 /* ═══════════════════════════════════════
