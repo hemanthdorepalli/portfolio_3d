@@ -34,9 +34,6 @@
   --radius:    16px;
 }
 
-/* ═══════════════════════════════════════════
-   RESET
-═══════════════════════════════════════════ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; font-size: 16px; }
 
@@ -63,9 +60,6 @@ button { cursor: pointer; font-family: var(--f-body); }
   html { scroll-behavior: auto; }
 }
 
-/* ═══════════════════════════════════════════
-   NOISE TEXTURE OVERLAY
-═══════════════════════════════════════════ */
 body::after {
   content: '';
   position: fixed; inset: 0;
@@ -75,9 +69,6 @@ body::after {
   z-index: 9000;
 }
 
-/* ═══════════════════════════════════════════
-   CUSTOM CURSOR (desktop pointer devices only)
-═══════════════════════════════════════════ */
 @media (hover: hover) and (pointer: fine) {
   * { cursor: none; }
 }
@@ -108,9 +99,6 @@ body::after {
 body.cursor-hover #cur-dot  { transform: translate(-50%,-50%) scale(2.2); background: var(--pink); }
 body.cursor-hover #cur-ring { border-color: rgba(236,72,153,.4); transform: translate(-50%,-50%) scale(1.5); }
 
-/* ═══════════════════════════════════════════
-   LOADER
-═══════════════════════════════════════════ */
 #loader {
   position: fixed; inset: 0; z-index: 9990;
   background: var(--bg);
@@ -152,9 +140,6 @@ body.cursor-hover #cur-ring { border-color: rgba(236,72,153,.4); transform: tran
 }
 @keyframes fillBar { to { width: 100%; } }
 
-/* ═══════════════════════════════════════════
-   NAV
-═══════════════════════════════════════════ */
 #nav {
   position: fixed; top: 0; left: 0; right: 0;
   z-index: 800;
@@ -231,9 +216,6 @@ body.cursor-hover #cur-ring { border-color: rgba(236,72,153,.4); transform: tran
 }
 .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--text); border-radius: 2px; transition: .25s; }
 
-/* ═══════════════════════════════════════════
-   HERO
-═══════════════════════════════════════════ */
 #hero {
   position: relative;
   min-height: 100svh;
@@ -399,9 +381,6 @@ body.cursor-hover #cur-ring { border-color: rgba(236,72,153,.4); transform: tran
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ═══════════════════════════════════════════
-   LAYOUT UTILITIES
-═══════════════════════════════════════════ */
 .section-wrap {
   max-width: 1160px;
   margin: 0 auto;
@@ -449,9 +428,6 @@ body.cursor-hover #cur-ring { border-color: rgba(236,72,153,.4); transform: tran
 }
 .reveal-left.show { opacity: 1; transform: none; }
 
-/* ═══════════════════════════════════════════
-   ABOUT
-═══════════════════════════════════════════ */
 #about { position: relative; }
 #about::before {
   content: '';
@@ -533,9 +509,6 @@ body.cursor-hover #cur-ring { border-color: rgba(236,72,153,.4); transform: tran
   line-height: 1.5;
 }
 
-/* ═══════════════════════════════════════════
-   EXPERIENCE
-═══════════════════════════════════════════ */
 #experience {
   background: var(--bg-card);
   border-top: 1px solid var(--border);
@@ -614,6 +587,12 @@ body.cursor-hover #cur-ring { border-color: rgba(236,72,153,.4); transform: tran
   font-family: var(--f-display);
   letter-spacing: -0.01em;
 }
+.exp-sub {
+  font-size: .78rem;
+  color: var(--dim);
+  margin-bottom: 1.25rem;
+  font-style: italic;
+}
 
 .exp-projects { display: flex; flex-direction: column; gap: 1.5rem; }
 .exp-project-name {
@@ -667,9 +646,6 @@ body.cursor-hover #cur-ring { border-color: rgba(236,72,153,.4); transform: tran
   text-transform: uppercase;
 }
 
-/* ═══════════════════════════════════════════
-   PROJECTS
-═══════════════════════════════════════════ */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -773,9 +749,6 @@ body.cursor-hover #cur-ring { border-color: rgba(236,72,153,.4); transform: tran
 .pill-amber  { color: var(--amber);  border-color: rgba(245,158,11,.3);  background: rgba(245,158,11,.08); }
 .pill-green  { color: var(--green);  border-color: rgba(16,185,129,.3);  background: rgba(16,185,129,.08); }
 
-/* ═══════════════════════════════════════════
-   SKILLS
-═══════════════════════════════════════════ */
 #skills { background: var(--bg-card); border-top: 1px solid var(--border); }
 
 .skill-pills {
@@ -828,9 +801,6 @@ body.cursor-hover #cur-ring { border-color: rgba(236,72,153,.4); transform: tran
   margin-bottom: .9rem;
 }
 
-/* ═══════════════════════════════════════════
-   CONTACT
-═══════════════════════════════════════════ */
 #contact {
   border-top: 1px solid var(--border);
   text-align: center;
@@ -920,9 +890,6 @@ body.cursor-hover #cur-ring { border-color: rgba(236,72,153,.4); transform: tran
   word-break: break-all;
 }
 
-/* ═══════════════════════════════════════════
-   FOOTER
-═══════════════════════════════════════════ */
 footer {
   border-top: 1px solid var(--border);
   padding: 2rem clamp(1.5rem,5vw,3rem);
@@ -942,9 +909,6 @@ footer {
   letter-spacing: .04em;
 }
 
-/* ═══════════════════════════════════════════
-   MOBILE NAV OVERLAY
-═══════════════════════════════════════════ */
 #mobile-menu {
   display: none;
   position: fixed; inset: 0;
@@ -967,9 +931,6 @@ footer {
 }
 #mobile-menu a:hover { color: var(--text); }
 
-/* ═══════════════════════════════════════════
-   RESPONSIVE
-═══════════════════════════════════════════ */
 @media (max-width: 900px) {
   .about-grid { grid-template-columns: 1fr; gap: 3rem; }
   .nav-links  { display: none; }
@@ -984,17 +945,14 @@ footer {
 </head>
 <body>
 
-<!-- CURSOR -->
 <div id="cur-dot"></div>
 <div id="cur-ring"></div>
 
-<!-- LOADER -->
 <div id="loader">
   <div class="ld-logo">HD.</div>
   <div class="ld-bar"><div class="ld-fill"></div></div>
 </div>
 
-<!-- MOBILE MENU -->
 <div id="mobile-menu">
   <a href="#about">About</a>
   <a href="#experience">Experience</a>
@@ -1003,7 +961,6 @@ footer {
   <a href="#contact">Contact</a>
 </div>
 
-<!-- NAV -->
 <nav id="nav">
   <div class="nav-brand">HD<span>.</span></div>
   <ul class="nav-links">
@@ -1022,9 +979,6 @@ footer {
   </button>
 </nav>
 
-<!-- ══════════════════════════════════════
-     HERO
-══════════════════════════════════════ -->
 <section id="hero">
   <canvas id="globe-canvas"></canvas>
   <div class="hero-vignette"></div>
@@ -1045,7 +999,7 @@ footer {
     </p>
 
     <p class="hero-desc">
-      3+ years shipping secure API platforms, real-time data pipelines,
+      3 years shipping secure API platforms, real-time data pipelines,
       and SaaS products — from Zero-Trust authentication and IoT sensor
       networks to LLM-powered agents. I build systems that hold.
     </p>
@@ -1068,9 +1022,6 @@ footer {
   </div>
 </section>
 
-<!-- ══════════════════════════════════════
-     ABOUT
-══════════════════════════════════════ -->
 <section id="about">
   <div class="section-wrap">
     <div class="about-grid">
@@ -1081,10 +1032,10 @@ footer {
           Building <em>Scalable</em><br/>Systems that Last
         </h2>
         <p>
-          I'm a full-stack developer focused on <strong>distributed systems, API security, and real-time data</strong>. My production work spans Zero-Trust authentication platforms, multi-tenant document management, and IoT monitoring — built with Python (Django, FastAPI) on the backend and React on the frontend.
+          I'm a backend-focused full-stack developer working on <strong>distributed systems, API security, and real-time data</strong>. My production work spans Zero-Trust authentication platforms, multi-tenant document management, and IoT monitoring — built with Python (Django, FastAPI, Celery) on the backend and React on the frontend.
         </p>
         <p>
-          Lately I've gone deep on the <strong>Node.js / Next.js / TypeScript</strong> ecosystem — shipping SaaS products with Express, Prisma, and Supabase PostgreSQL, and building LLM-powered features with streaming and RAG-style context assembly.
+          Lately I've gone deep on the <strong>Node.js / Next.js / TypeScript</strong> ecosystem — shipping SaaS products with Express, Prisma, and Supabase, and building LLM-powered features with streaming and RAG-style context assembly.
         </p>
         <p>
           My engineering foundation started in Mechanical at JNTU Kakinada. I pivoted to software because <strong>building things that run at scale is more interesting than things that sit still</strong>. That mindset still drives every system I design.
@@ -1112,7 +1063,7 @@ footer {
 
       <div class="about-stats reveal">
         <div class="stat-card">
-          <div class="stat-num">3+</div>
+          <div class="stat-num">3</div>
           <div class="stat-label">Years Experience</div>
           <div class="stat-desc">Full-stack development across security, IoT, and SaaS domains</div>
         </div>
@@ -1127,9 +1078,9 @@ footer {
           <div class="stat-desc">Python (Django, FastAPI) and Node.js (Express, Next.js, TypeScript)</div>
         </div>
         <div class="stat-card">
-          <div class="stat-num">3</div>
+          <div class="stat-num">2</div>
           <div class="stat-label">Companies</div>
-          <div class="stat-desc">FactOps, ZdotApps, and SocialTek Solutions</div>
+          <div class="stat-desc">FACT-Ops and SocialTek AI &amp; ML Business Solutions</div>
         </div>
       </div>
 
@@ -1137,9 +1088,6 @@ footer {
   </div>
 </section>
 
-<!-- ══════════════════════════════════════
-     EXPERIENCE
-══════════════════════════════════════ -->
 <section id="experience">
   <div class="section-wrap">
     <div class="exp-header reveal">
@@ -1149,22 +1097,23 @@ footer {
 
     <div class="exp-timeline">
 
-      <!-- FactOps -->
+      <!-- FACT-Ops (merged, includes Zdotapps/Weewa) -->
       <div class="exp-item reveal">
         <div class="exp-meta">
-          <div class="exp-company">FactOps Private Limited</div>
-          <div class="exp-period">May 2025 — Present</div>
+          <div class="exp-company">FACT-Ops Private Limited</div>
+          <div class="exp-period">Nov 2024 — Apr 2026</div>
         </div>
-        <div class="exp-role">Full Stack Developer</div>
+        <div class="exp-role">Software Engineer L1-2 (Full Stack)</div>
+        <div class="exp-sub">Sri City, Andhra Pradesh · Related entities: Zdotapps Technologies, Lifecykul Sports, Genihub Digital Ventures</div>
 
         <div class="exp-projects">
 
           <div>
-            <div class="exp-project-name">FACT.Safe — Document Management</div>
+            <div class="exp-project-name">FACT.Safe — Multi-Tenant Document Vault</div>
             <ul class="exp-bullets">
               <li>Architected a multi-tenant document vault with row-level tenant isolation and encrypted AWS S3 storage — sub-100ms retrieval with zero unauthorized access.</li>
               <li>Built per-user, per-category RBAC with an auditable delegation wizard, cutting permission management time by 60%.</li>
-              <li>Reduced API latency by 70% with Celery–Redis async pipelines, plus a service-layer architecture refactor across the Django codebase.</li>
+              <li>Reduced API latency by 70% via Celery–Redis async pipelines.</li>
             </ul>
             <div class="exp-tags">
               <span class="exp-tag">Django</span><span class="exp-tag">React</span><span class="exp-tag">PostgreSQL</span><span class="exp-tag">AWS S3</span><span class="exp-tag">Celery</span><span class="exp-tag">Redis</span>
@@ -1172,55 +1121,48 @@ footer {
           </div>
 
           <div>
-            <div class="exp-project-name">FACT.Login — Centralized Auth</div>
+            <div class="exp-project-name">FACT.Login — Zero-Trust SSO</div>
             <ul class="exp-bullets">
-              <li>Built SSO across 4 products using OAuth2/OIDC with JWT + JTI token rotation — one identity layer for the entire platform.</li>
-              <li>Three-layer Zero-Trust security: device fingerprinting, IP binding, and location anomaly detection, blocking suspicious sessions in under 200ms with a dual-layer Redis + PostgreSQL token blocklist.</li>
+              <li>Built SSO across 4 FACT products using OAuth with JWT + JTI token rotation — one identity layer for the entire platform.</li>
+              <li>Three-layer Zero-Trust security: IP binding, device fingerprinting, and location anomaly detection — blocks suspicious sessions in under 200ms.</li>
+              <li>Dual-layer Redis + PostgreSQL token blocklist so revocation survives Redis failure. HTTP-only cookies eliminate XSS token theft.</li>
             </ul>
             <div class="exp-tags">
-              <span class="exp-tag">OAuth2</span><span class="exp-tag">OIDC</span><span class="exp-tag">Zero-Trust</span><span class="exp-tag">Django</span><span class="exp-tag">JWT</span>
+              <span class="exp-tag">OAuth2</span><span class="exp-tag">Zero-Trust</span><span class="exp-tag">Django</span><span class="exp-tag">JWT</span><span class="exp-tag">Redis</span><span class="exp-tag">PostgreSQL</span>
             </div>
           </div>
 
-        </div>
-      </div>
-
-      <!-- ZdotApps -->
-      <div class="exp-item reveal">
-        <div class="exp-meta">
-          <div class="exp-company">ZdotApps Private Limited</div>
-          <div class="exp-period">Nov 2024 — May 2025</div>
-        </div>
-        <div class="exp-role">Full Stack Developer</div>
-
-        <div class="exp-projects">
           <div>
-            <div class="exp-project-name">Weewa — Real-Time IoT Platform</div>
+            <div class="exp-project-name">Weewa — Real-Time IoT Platform <span style="color:var(--dim);font-weight:400;text-transform:none;letter-spacing:0;font-size:.72rem;margin-left:.5rem">(at Zdotapps Technologies)</span></div>
             <ul class="exp-bullets">
-              <li>Delivered a real-time IoT monitoring platform processing 100+ daily sensor readings (weather, energy, water) from LoRaWAN and cellular sensors across 20+ remote locations.</li>
+              <li>Real-time IoT monitoring platform processing 100+ daily sensor readings (weather, energy, water) from LoRaWAN and cellular sensors across 20+ remote locations, using FastAPI validation and Celery workers running Pandas/ML analytics.</li>
               <li>Engineered WebSocket streaming to React dashboards, cutting data refresh lag from 5 minutes to under 2 seconds.</li>
-              <li>Built sensor-health alerting (WhatsApp/email within 20 minutes of data gaps), reducing failure detection time by 80%; adopted RabbitMQ as Celery broker for zero task loss during restarts.</li>
+              <li>Built sensor-health alerting (WhatsApp/email within 20 minutes of data gaps), reducing failure detection time by 80%. Adopted RabbitMQ as Celery broker for zero task loss during restarts.</li>
             </ul>
             <div class="exp-tags">
               <span class="exp-tag">FastAPI</span><span class="exp-tag">WebSockets</span><span class="exp-tag">Celery</span><span class="exp-tag">RabbitMQ</span><span class="exp-tag">React</span><span class="exp-tag">Pandas</span>
             </div>
           </div>
+
         </div>
       </div>
 
       <!-- SocialTek -->
       <div class="exp-item reveal">
         <div class="exp-meta">
-          <div class="exp-company">SocialTek Solutions</div>
-          <div class="exp-period">Oct 2022 — Jul 2024</div>
+          <div class="exp-company">SocialTek AI &amp; ML Business Solutions</div>
+          <div class="exp-period">Jun 2023 — Oct 2024</div>
         </div>
-        <div class="exp-role">Technical Trainer</div>
+        <div class="exp-role">Full Stack Developer</div>
+        <div class="exp-sub">Hyderabad, India</div>
         <ul class="exp-bullets">
-          <li>Coached 50+ students across 6 batches in full-stack development (Spring Boot, React, MySQL) with an 85% placement rate.</li>
-          <li>Built 15+ demo applications — REST APIs, JWT authentication, MVC architecture, AWS deployments — used as curriculum references.</li>
+          <li>Developed and maintained scalable full-stack web applications using React.js and FastAPI, delivering responsive UIs and high-performance RESTful APIs.</li>
+          <li>Built and optimized AWS Lambda serverless functions, cutting infrastructure overhead by ~35% and improving scalability.</li>
+          <li>Designed secure REST APIs for frontend-backend communication, improving response times by 25% through query optimization and asynchronous processing.</li>
+          <li>Optimized DynamoDB data models, indexing strategies, and query patterns, reducing average database response time by 30ms.</li>
         </ul>
         <div class="exp-tags">
-          <span class="exp-tag">Spring Boot</span><span class="exp-tag">React</span><span class="exp-tag">MySQL</span><span class="exp-tag">AWS</span>
+          <span class="exp-tag">Python</span><span class="exp-tag">FastAPI</span><span class="exp-tag">React</span><span class="exp-tag">AWS Lambda</span><span class="exp-tag">DynamoDB</span><span class="exp-tag">REST APIs</span>
         </div>
       </div>
 
@@ -1228,9 +1170,6 @@ footer {
   </div>
 </section>
 
-<!-- ══════════════════════════════════════
-     PROJECTS
-══════════════════════════════════════ -->
 <section id="projects">
   <div class="section-wrap">
     <div class="reveal" style="margin-bottom:3rem">
@@ -1244,7 +1183,7 @@ footer {
         <div class="proj-icon" style="background:rgba(99,102,241,.1)">📋</div>
         <div class="proj-title">Software Leads<span class="proj-badge">New</span></div>
         <p class="proj-desc">
-          SaaS CRM for a software development company covering the full client project lifecycle — lead intake, requirements, cost estimation, developer assignment, payment tracking, and automated PDF proposal generation.
+          SaaS CRM for a software development company covering the full client project lifecycle — lead intake, requirements, cost estimation, developer assignment, payment tracking, and automated PDF proposal generation. Meta Lead Ads integration + BullMQ background jobs.
         </p>
         <div class="proj-tags">
           <span class="proj-tag-pill pill-indigo">Next.js</span>
@@ -1259,7 +1198,7 @@ footer {
         <div class="proj-icon" style="background:rgba(236,72,153,.1)">🧠</div>
         <div class="proj-title">BRAHMO Composition Agent<span class="proj-badge">New</span></div>
         <p class="proj-desc">
-          Healthcare AI context-assembly system: 27 hospital knowledge nodes composed into structured LLM context under a hard 4,000-token budget, with Groq streaming responses and protected safety-critical rules.
+          Healthcare AI context-assembly system: 27 hospital knowledge nodes composed into an 8-block LLM context string under a hard 4,000-token budget, with Groq streaming responses and CONSTRAINT nodes protected from compression.
         </p>
         <div class="proj-tags">
           <span class="proj-tag-pill pill-pink">FastAPI</span>
@@ -1274,7 +1213,7 @@ footer {
         <div class="proj-icon" style="background:rgba(16,185,129,.1)">🔐</div>
         <div class="proj-title">FACT.Safe</div>
         <p class="proj-desc">
-          Enterprise multi-tenant document management. Encrypted vaults on AWS S3, row-level tenant isolation, granular RBAC with delegation, and Celery–Redis async pipelines.
+          Enterprise multi-tenant document management. Encrypted vaults on AWS S3, row-level tenant isolation, granular RBAC with delegation, and Celery–Redis async pipelines. Sub-100ms retrieval, 70% latency reduction.
         </p>
         <div class="proj-tags">
           <span class="proj-tag-pill pill-green">Django</span>
@@ -1289,13 +1228,13 @@ footer {
         <div class="proj-icon" style="background:rgba(245,158,11,.1)">🛡️</div>
         <div class="proj-title">FACT.Login</div>
         <p class="proj-desc">
-          Centralized SSO platform for cross-product authentication. OAuth2/OIDC with JTI token rotation, device binding, IP validation, session anomaly detection, and dual-layer token blocklisting.
+          Centralized SSO platform for cross-product authentication. OAuth with JTI token rotation, device binding, IP validation, session anomaly detection, and dual-layer token blocklisting across Redis + PostgreSQL.
         </p>
         <div class="proj-tags">
           <span class="proj-tag-pill pill-amber">OAuth2</span>
-          <span class="proj-tag-pill pill-indigo">OIDC</span>
           <span class="proj-tag-pill pill-cyan">JWT</span>
           <span class="proj-tag-pill pill-pink">Zero-Trust</span>
+          <span class="proj-tag-pill pill-indigo">Django</span>
         </div>
       </div>
 
@@ -1303,7 +1242,7 @@ footer {
         <div class="proj-icon" style="background:rgba(99,102,241,.1)">📡</div>
         <div class="proj-title">Weewa IoT Platform</div>
         <p class="proj-desc">
-          Real-time IoT monitoring system. WebSocket live sensor streaming, Celery/RabbitMQ data pipelines with zero task loss, React map dashboards, and automated sensor-health alerting.
+          Real-time IoT monitoring system. WebSocket live sensor streaming, Celery/RabbitMQ data pipelines with zero task loss, React map dashboards, and automated sensor-health alerting via WhatsApp/email.
         </p>
         <div class="proj-tags">
           <span class="proj-tag-pill pill-indigo">FastAPI</span>
@@ -1331,9 +1270,6 @@ footer {
   </div>
 </section>
 
-<!-- ══════════════════════════════════════
-     SKILLS
-══════════════════════════════════════ -->
 <section id="skills">
   <div class="section-wrap">
     <div class="reveal" style="margin-bottom:3rem">
@@ -1349,7 +1285,6 @@ footer {
           <span class="sk-pill"><span class="sk-dot" style="background:#3776ab"></span>Python</span>
           <span class="sk-pill"><span class="sk-dot" style="background:#f7df1e"></span>JavaScript</span>
           <span class="sk-pill"><span class="sk-dot" style="background:#3178c6"></span>TypeScript</span>
-          <span class="sk-pill"><span class="sk-dot" style="background:#007396"></span>Java</span>
         </div>
       </div>
 
@@ -1360,6 +1295,8 @@ footer {
           <span class="sk-pill"><span class="sk-dot" style="background:#009688"></span>FastAPI</span>
           <span class="sk-pill"><span class="sk-dot" style="background:#68a063"></span>Node.js</span>
           <span class="sk-pill"><span class="sk-dot" style="background:#888"></span>Express</span>
+          <span class="sk-pill"><span class="sk-dot" style="background:#6366f1"></span>REST APIs</span>
+          <span class="sk-pill"><span class="sk-dot" style="background:#10b981"></span>Microservices</span>
         </div>
       </div>
 
@@ -1368,7 +1305,6 @@ footer {
         <div class="skill-pills">
           <span class="sk-pill"><span class="sk-dot" style="background:#61dafb"></span>React</span>
           <span class="sk-pill"><span class="sk-dot" style="background:#eee"></span>Next.js</span>
-          <span class="sk-pill"><span class="sk-dot" style="background:#646cff"></span>Vite</span>
           <span class="sk-pill"><span class="sk-dot" style="background:#38bdf8"></span>Tailwind</span>
         </div>
       </div>
@@ -1377,33 +1313,37 @@ footer {
         <div class="skill-block-title">Databases &amp; ORM</div>
         <div class="skill-pills">
           <span class="sk-pill"><span class="sk-dot" style="background:#336791"></span>PostgreSQL</span>
+          <span class="sk-pill"><span class="sk-dot" style="background:#00758f"></span>MySQL</span>
+          <span class="sk-pill"><span class="sk-dot" style="background:#dc382d"></span>Redis</span>
+          <span class="sk-pill"><span class="sk-dot" style="background:#4053d6"></span>DynamoDB</span>
           <span class="sk-pill"><span class="sk-dot" style="background:#3ecf8e"></span>Supabase</span>
           <span class="sk-pill"><span class="sk-dot" style="background:#5a67d8"></span>Prisma</span>
-          <span class="sk-pill"><span class="sk-dot" style="background:#dc382d"></span>Redis</span>
-          <span class="sk-pill"><span class="sk-dot" style="background:#00758f"></span>MySQL</span>
         </div>
       </div>
 
       <div class="skill-block">
         <div class="skill-block-title">Cloud &amp; DevOps</div>
         <div class="skill-pills">
-          <span class="sk-pill"><span class="sk-dot" style="background:#ff9900"></span>AWS</span>
+          <span class="sk-pill"><span class="sk-dot" style="background:#ff9900"></span>AWS (S3, Lambda)</span>
           <span class="sk-pill"><span class="sk-dot" style="background:#2496ed"></span>Docker</span>
           <span class="sk-pill"><span class="sk-dot" style="background:#24292e"></span>GitHub Actions</span>
+          <span class="sk-pill"><span class="sk-dot" style="background:#22d3ee"></span>CI/CD</span>
+          <span class="sk-pill"><span class="sk-dot" style="background:#0e9f6e"></span>Gunicorn</span>
+          <span class="sk-pill"><span class="sk-dot" style="background:#6366f1"></span>Daphne</span>
           <span class="sk-pill"><span class="sk-dot" style="background:#46e3b7"></span>Render</span>
           <span class="sk-pill"><span class="sk-dot" style="background:#eee"></span>Vercel</span>
-          <span class="sk-pill"><span class="sk-dot" style="background:#333"></span>Linux</span>
         </div>
       </div>
 
       <div class="skill-block">
-        <div class="skill-block-title">Security</div>
+        <div class="skill-block-title">Security &amp; Auth</div>
         <div class="skill-pills">
           <span class="sk-pill"><span class="sk-dot" style="background:#6366f1"></span>JWT</span>
           <span class="sk-pill"><span class="sk-dot" style="background:#22d3ee"></span>OAuth2</span>
-          <span class="sk-pill"><span class="sk-dot" style="background:#ec4899"></span>OIDC</span>
           <span class="sk-pill"><span class="sk-dot" style="background:#10b981"></span>RBAC</span>
+          <span class="sk-pill"><span class="sk-dot" style="background:#ec4899"></span>SSO</span>
           <span class="sk-pill"><span class="sk-dot" style="background:#f59e0b"></span>Zero-Trust</span>
+          <span class="sk-pill"><span class="sk-dot" style="background:#0d2137"></span>API Security</span>
         </div>
       </div>
 
@@ -1414,7 +1354,7 @@ footer {
           <span class="sk-pill"><span class="sk-dot" style="background:#ff6600"></span>RabbitMQ</span>
           <span class="sk-pill"><span class="sk-dot" style="background:#ec4899"></span>WebSockets</span>
           <span class="sk-pill"><span class="sk-dot" style="background:#68a063"></span>Worker Threads</span>
-          <span class="sk-pill"><span class="sk-dot" style="background:#6366f1"></span>Microservices</span>
+          <span class="sk-pill"><span class="sk-dot" style="background:#dc382d"></span>BullMQ</span>
         </div>
       </div>
 
@@ -1433,9 +1373,6 @@ footer {
   </div>
 </section>
 
-<!-- ══════════════════════════════════════
-     CONTACT
-══════════════════════════════════════ -->
 <section id="contact">
   <div class="section-wrap">
     <div class="contact-wrap">
@@ -1488,21 +1425,14 @@ footer {
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-brand">HD<span>.</span></div>
   <div class="footer-copy">© 2026 Hemanth Dorepalli · Full Stack Developer · Andhra Pradesh, India</div>
 </footer>
 
-<!-- ══════════════════════════════════════════════════════════
-     JAVASCRIPT — MODULAR
-══════════════════════════════════════════════════════════ -->
 <script>
 'use strict';
 
-/* ═══════════════════════════════════════
-   MODULE 1 — LOADER
-═══════════════════════════════════════ */
 (function LoaderModule() {
   window.addEventListener('load', () => {
     setTimeout(() => {
@@ -1511,11 +1441,7 @@ footer {
   });
 })();
 
-/* ═══════════════════════════════════════
-   MODULE 2 — CUSTOM CURSOR
-═══════════════════════════════════════ */
 (function CursorModule() {
-  // Skip entirely on touch devices
   if (window.matchMedia('(hover: none), (pointer: coarse)').matches) return;
 
   const dot  = document.getElementById('cur-dot');
@@ -1542,9 +1468,6 @@ footer {
   });
 })();
 
-/* ═══════════════════════════════════════
-   MODULE 3 — NAVBAR
-═══════════════════════════════════════ */
 (function NavModule() {
   const nav = document.getElementById('nav');
   const hb  = document.getElementById('hamburger');
@@ -1577,9 +1500,6 @@ footer {
   });
 })();
 
-/* ═══════════════════════════════════════
-   MODULE 4 — SCROLL REVEAL
-═══════════════════════════════════════ */
 (function RevealModule() {
   const observer = new IntersectionObserver(entries => {
     entries.forEach((entry) => {
@@ -1598,18 +1518,6 @@ footer {
   document.querySelectorAll('.reveal, .reveal-left').forEach(el => observer.observe(el));
 })();
 
-/* ═══════════════════════════════════════════════════════════════
-   MODULE 5 — THREE.JS GLOBE
-   ① Globe mesh — displaced icosahedron
-   ② Lat/lon grid overlay
-   ③ Atmosphere glow
-   ④ Particle cloud
-   ⑤ Arc lines (great-circle paths)
-   ⑥ Lights
-   ⑦ Mouse parallax
-   ⑧ Scroll shrink
-   ⑨ Visibility pause
-═══════════════════════════════════════════════════════════════ */
 (function GlobeModule() {
 
   function waitThree(cb, n) {
@@ -1650,7 +1558,6 @@ footer {
     const C_CYAN   = new THREE.Color('#22d3ee');
     const C_PINK   = new THREE.Color('#ec4899');
 
-    /* ① GLOBE */
     const GEO_DETAIL = window.innerWidth < 768 ? 32 : 48;
     const globeGeo = new THREE.IcosahedronGeometry(1.4, GEO_DETAIL > 32 ? 7 : 5);
     const pos = globeGeo.attributes.position;
@@ -1696,7 +1603,6 @@ footer {
     const globeMesh = new THREE.Mesh(globeGeo, globeMat);
     scene.add(globeMesh);
 
-    /* ② GRID */
     function buildGrid() {
       const pts = [];
       const R = 1.405;
@@ -1734,7 +1640,6 @@ footer {
     const gridLines = buildGrid();
     scene.add(gridLines);
 
-    /* ③ ATMOSPHERE */
     function makeAtmoSphere(radius, color, opacity) {
       const geo = new THREE.SphereGeometry(radius, 32, 32);
       const mat = new THREE.MeshBasicMaterial({
@@ -1751,7 +1656,6 @@ footer {
     scene.add(makeAtmoSphere(1.72, 0x22d3ee, 0.045));
     scene.add(makeAtmoSphere(1.90, 0x0000aa, 0.025));
 
-    /* ④ PARTICLES */
     const PART_COUNT = window.innerWidth < 768 ? 1200 : 2200;
     const pArr = new Float32Array(PART_COUNT * 3);
     const pCol = new Float32Array(PART_COUNT * 3);
@@ -1782,7 +1686,6 @@ footer {
     const particles = new THREE.Points(partGeo, partMat);
     scene.add(particles);
 
-    /* ⑤ ARCS */
     function latLonToVec(lat, lon, r) {
       const phi   = (90 - lat) * Math.PI / 180;
       const theta = (lon + 180) * Math.PI / 180;
@@ -1833,7 +1736,6 @@ footer {
     });
     scene.add(arcGroup);
 
-    /* ⑥ LIGHTS */
     scene.add(new THREE.AmbientLight(0xffffff, 0.18));
 
     const keyLight = new THREE.PointLight(0x5a5fff, 5.0, 18);
@@ -1848,7 +1750,6 @@ footer {
     backLight.position.set(0, 0, -4);
     scene.add(backLight);
 
-    /* ⑦ MOUSE PARALLAX */
     let targetCamX = 0, targetCamY = 0;
     let currentCamX = 0, currentCamY = 0;
 
@@ -1857,20 +1758,17 @@ footer {
       targetCamY = (e.clientY / window.innerHeight - 0.5) * 0.4;
     }, { passive: true });
 
-    /* ⑧ SCROLL */
     let scrollY = 0;
     window.addEventListener('scroll', () => {
       scrollY = window.scrollY;
     }, { passive: true });
 
-    /* ⑨ VISIBILITY */
     let isVisible = true;
     new IntersectionObserver(
       entries => isVisible = entries[0].isIntersecting,
       { threshold: 0.05 }
     ).observe(heroEl);
 
-    /* LOOP */
     let t = 0;
     const arcLines = arcGroup.children.filter(c => c.type === 'Line');
     const arcPhases = arcLines.map(() => Math.random() * Math.PI * 2);
@@ -1922,9 +1820,6 @@ footer {
   });
 })();
 
-/* ═══════════════════════════════════════
-   MODULE 6 — SMOOTH ANCHOR SCROLL
-═══════════════════════════════════════ */
 (function SmoothScrollModule() {
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
